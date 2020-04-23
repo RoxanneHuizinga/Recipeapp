@@ -1,3 +1,50 @@
 <resources>
-    <string name="app_name">Recipe app</string>
+    <string name="app_name">recipeapp</string>
+
+    <!-- content_home.xml-->
+    <string name="honeycomb_description">Honeycomb.</string>
+    <string name="whisk_description">whisk.</string>
+
+    <!-- menu_main.xml -->
+    <string name="recipe_fagment_name">Recipe</string>
+    <string name="rating_fragment_name">Rating</string>
+    <string name="title_activity_main">MainActivity</string>
+
+    <!-- activity_recipe.xml -->
+    <string name="add_image_text">Add Image</string>
+    <string name="recipe_button_text">Next</string>
+    <string name="recipe_activity_title">Add New Recipe</string>
+
+    <!-- toolbar_ingredients.xml -->
+    <string name="ingredients_activity_title">Ingredients</string>
+
+    <!-- activity_instructions.xml -->
+    <string name="instructions_add_text">Instructions</string>
+
+    <!-- activity_ingredients.xml -->
+    <string name="ingredients_button_text">Done</string>
+    <string name="character_text">•&#160;</string>
+    <string name="ingredient_text">Some Ingredient</string>
+
+    <!-- activity_instructions.xml -->
+    <string name="instruction_step_text">Step 1.</string>
+    <string name="instruction_text">Do this: …</string>
+    <string name="instruction_hint_text">Your instruction</string>
+    <string name="instruction_step_hint_text">Add step</string>
+
+    <!-- item_recipe.xml -->
+    <string name="recipe_name_text">Example recipe</string>
+    <string name="recipe_serving_time_text">30 min.</string>
+    <string name="recipe_serving_amount_text">4 people</string>
+
+    <!-- fragment_rate.xml -->
+    <string name="rate_button_text">Send Feedback</string>
+    <string name="fragment_rate_text">We hope you enjoy our application!</string>
+    <string name="rating_comment_text">No rating…</string>
+    <string name="feedback_hint_text">Tell us what you think…</string>
+
+    <!-- fragment_rated.xml -->
+    <string name="thank_you_text">Thank you text.</string>
+    <string name="dish_title_text">Example dish</string>
+
 </resources>
