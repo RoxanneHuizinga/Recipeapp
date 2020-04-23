@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.Toolbar
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/toolbarMain"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    android:background="@color/colorToolbar">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="135dp"
+        android:layout_height="45dp"
+        android:layout_gravity="center"
+        android:src="@drawable/bee_logo1"/>
+
+</androidx.appcompat.widget.Toolbar>
