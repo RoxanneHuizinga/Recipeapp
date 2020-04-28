@@ -11,7 +11,6 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.recipeapp.activities.DetailActivity
 import com.example.recipeapp.R
 import com.example.recipeapp.recipe.Recipe
 import com.example.recipeapp.recipe.RecipesAdapter
@@ -30,7 +29,7 @@ class HomeFragment : Fragment() {
         recipeId = it.id;
         recipeName = it.name;
 
-        openDetailActivity();
+
     }
 
     private lateinit var myView: View;
@@ -46,6 +45,7 @@ class HomeFragment : Fragment() {
 
         return myView;
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState);
 
@@ -108,15 +108,5 @@ class HomeFragment : Fragment() {
         }
         return ItemTouchHelper(callback)
     }
-
-    private fun openDetailActivity() {
-        val detailIntent = Intent(this@HomeFragment.context, DetailActivity::class.java);
-        detailIntent.putExtra("ID", recipeId);
-        detailIntent.putExtra("NAME", recipeName);
-
-        startActivity(detailIntent);
-
-        // Animation to fade into the AddActivity.
-        activity?.overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-    }
 }
+
