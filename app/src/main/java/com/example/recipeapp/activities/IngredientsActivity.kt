@@ -43,7 +43,6 @@ class IngredientsActivity : AppCompatActivity() {
 
     private fun onIngredientAdd() {
 
-        //TODO: Perhaps activate this function on keyboard enter press.
 
         hideKeyboard(this.rvIngredients);
 

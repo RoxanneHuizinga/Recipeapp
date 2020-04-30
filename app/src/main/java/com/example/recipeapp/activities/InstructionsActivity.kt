@@ -98,7 +98,7 @@ class InstructionsActivity : AppCompatActivity() {
 
     private fun onAddClick() {
 
-        //TODO: User can only put the steps numerical -> Step 1, step 2... || not Step 1, step 3.
+
 
         hideKeyboard(this.rvInstructions);
 
