@@ -9,14 +9,16 @@ interface RecipeDao {
 
     @Query("SELECT * FROM recipe_table")
     // LiveData: The generated code runs the query asynchronously on a background thread when needed.
-    fun getAllRecipes(): LiveData<List<Recipe>>;
+    //This is the reason why we should remove the suspend keyword because we won’t be needing Coroutines
+    // for this method anymore since it’s already running on a background thread.
+    fun getAllRecipes(): LiveData<List<Recipe>>
 
     @Query("DELETE FROM recipe_table")
-    suspend fun deleteAllRecipes();
+    suspend fun deleteAllRecipes()
 
     @Insert
-    suspend fun insertRecipe(recipe: Recipe);
+    suspend fun insertRecipe(recipe: Recipe)
 
     @Delete
-    suspend fun deleteRecipe(recipe: Recipe);
+    suspend fun deleteRecipe(recipe: Recipe)
 }

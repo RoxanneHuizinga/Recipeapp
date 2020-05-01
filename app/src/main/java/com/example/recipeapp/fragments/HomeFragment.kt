@@ -1,6 +1,6 @@
 package com.example.recipeapp.fragments
 
-import android.content.Intent
+
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -21,19 +21,19 @@ import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment : Fragment() {
 
-    private var recipeId: Long? = null;
-    private var recipeName: String? = null;
+    private var recipeId: Long? = null
+    private var recipeName: String? = null
 
-    private val recipesList = arrayListOf<Recipe>();
+    private val recipesList = arrayListOf<Recipe>()
     val recipesAdapter = RecipesAdapter(recipesList) {
-        recipeId = it.id;
-        recipeName = it.name;
+        recipeId = it.id
+        recipeName = it.name
 
 
     }
 
-    private lateinit var myView: View;
-    private lateinit var viewModel: GeneralViewModel;
+    private lateinit var myView: View
+    private lateinit var viewModel: GeneralViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -41,39 +41,39 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        myView = inflater.inflate(R.layout.fragment_home, container, false);
+        myView = inflater.inflate(R.layout.fragment_home, container, false)
 
-        return myView;
+        return myView
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState);
+        super.onViewCreated(view, savedInstanceState)
 
-        myView.rootView.ivHoney.setImageResource(R.drawable.honey);
+        myView.rootView.ivHoney.setImageResource(R.drawable.honey)
 
-        initViews();
-        initViewModel();
+        initViews()
+        initViewModel()
     }
 
     private fun initViews() {
         // Reverse Layout is true.
-        val layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, true);
-        rvRecipes.layoutManager = layoutManager;
-        layoutManager.stackFromEnd = true;
-        rvRecipes.adapter = recipesAdapter;
+        val layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, true)
+        rvRecipes.layoutManager = layoutManager
+        layoutManager.stackFromEnd = true
+        rvRecipes.adapter = recipesAdapter
 
-        createItemTouchHelper().attachToRecyclerView(rvRecipes);
+        createItemTouchHelper().attachToRecyclerView(rvRecipes)
     }
 
     // Instead of the getRecipes. Now using initViewModel() with LiveData.
     fun initViewModel() {
-        viewModel = ViewModelProviders.of(this).get(GeneralViewModel::class.java);
+        viewModel = ViewModelProviders.of(this).get(GeneralViewModel::class.java)
 
         // Observe recipes from the view model, update the list when the data is changed.
         viewModel.recipes.observe(this, Observer { recipes ->
-            this@HomeFragment.recipesList.clear();
-            this@HomeFragment.recipesList.addAll(recipes);
-            recipesAdapter.notifyDataSetChanged();
+            this@HomeFragment.recipesList.clear()
+            this@HomeFragment.recipesList.addAll(recipes)
+            recipesAdapter.notifyDataSetChanged()
         })
     }
 
@@ -94,16 +94,16 @@ class HomeFragment : Fragment() {
                 viewHolder: RecyclerView.ViewHolder,
                 target: RecyclerView.ViewHolder
             ): Boolean {
-                return false;
+                return false
             }
 
             // Callback triggered when a user swiped an item.
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 val position = viewHolder.adapterPosition
-                val recipeToDelete = recipesList[position];
+                val recipeToDelete = recipesList[position]
 
                 // Delete recipe at this position.
-                viewModel.deleteRecipe(recipeToDelete);
+                viewModel.deleteRecipe(recipeToDelete)
             }
         }
         return ItemTouchHelper(callback)

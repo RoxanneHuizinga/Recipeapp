@@ -24,13 +24,13 @@ class RecipesAdapter (private val recipes: List<Recipe>, private val onClick: (R
      * We will be needing Context later on so a variable context is set.
      */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        context = parent.context;
-        return ViewHolder(LayoutInflater.from(context).inflate(R.layout.item_recipe, parent, false));
+        context = parent.context
+        return ViewHolder(LayoutInflater.from(context).inflate(R.layout.item_recipe, parent, false))
     }
 
     // Size of Instructions.
     override fun getItemCount(): Int {
-        return recipes.size;
+        return recipes.size
     }
 
     // Bind method to bind the data to the ViewHolder.
@@ -47,26 +47,26 @@ class RecipesAdapter (private val recipes: List<Recipe>, private val onClick: (R
         init {
             itemView.setOnClickListener{
                 // AdapterPosition is position of the item represented by the ViewHolder.
-                onClick(recipes[adapterPosition]);
+                onClick(recipes[adapterPosition])
             }
         }
 
         fun bind(recipe: Recipe) {
-            var favorite = false;
+            var favorite = false
 
-            itemView.tvRecipeName.text = recipe.name;
-            itemView.ivDish.setImageURI(recipe.image);
-            itemView.tvServingTime.text = recipe.preparationTime.toString() + " min.";
-            itemView.tvServingAmount.text = recipe.servings.toString() + " people.";
+            itemView.tvRecipeName.text = recipe.name
+            itemView.ivDish.setImageURI(recipe.image)
+            itemView.tvServingTime.text = recipe.preparationTime.toString() + " min."
+            itemView.tvServingAmount.text = recipe.servings.toString() + " people."
 
             // Makes it able for the user to favorite and unfavorite.
             itemView.ivFavorite.setOnClickListener {
                 if (favorite) {
-                    itemView.ivFavorite.setImageResource(R.drawable.ic_favorited);
-                    favorite = false;
+                    itemView.ivFavorite.setImageResource(R.drawable.ic_favorited)
+                    favorite = false
                 } else if (!favorite) {
-                    itemView.ivFavorite.setImageResource(R.drawable.ic_favorite);
-                    favorite = true;
+                    itemView.ivFavorite.setImageResource(R.drawable.ic_favorite)
+                    favorite = true
                 }
             }
         }

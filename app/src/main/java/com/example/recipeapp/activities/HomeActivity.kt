@@ -24,44 +24,44 @@ const val REQUEST_CODE = 100;
 
 class HomeActivity : AppCompatActivity() {
 
-    private lateinit var bottomNavigation: BottomNavigationView;
-    private lateinit var toolbar: Toolbar;
-    private lateinit var view: View;
+    private lateinit var bottomNavigation: BottomNavigationView
+    private lateinit var toolbar: Toolbar
+    private lateinit var view: View
 
-    private var fragment: Fragment? = null;
-    private lateinit var viewModel: GeneralViewModel;
+    private var fragment: Fragment? = null
+    private lateinit var viewModel: GeneralViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_home)
 
-        fragment = supportFragmentManager.findFragmentById(R.id.homeFragment);
-        viewModel = ViewModelProviders.of(this).get(GeneralViewModel::class.java);
+        fragment = supportFragmentManager.findFragmentById(R.id.homeFragment)
+        viewModel = ViewModelProviders.of(this).get(GeneralViewModel::class.java)
 
         btnAddRecipe.setOnClickListener {
-            onAddClick();
+            onAddClick()
         }
 
-        setToolbar();
-        initNavigation();
+        setToolbar()
+        initNavigation()
     }
 
     private fun onAddClick() {
         // From HomeActivity to AddActivity.
         val nextIntent = Intent(this@HomeActivity, RecipeActivity::class.java);
-        startActivityForResult(nextIntent, REQUEST_CODE);
+        startActivityForResult(nextIntent, REQUEST_CODE)
 
         // Animation to fade into the AddActivity.
-        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
     }
 
     private fun setToolbar() {
 
-        bottomNavigation = findViewById(R.id.navView);
-        view = findViewById(R.id.parentMain);
-        toolbar = view.findViewById(R.id.toolbarHome);
+        bottomNavigation = findViewById(R.id.navView)
+        view = findViewById(R.id.parentMain)
+        toolbar = view.findViewById(R.id.toolbarHome)
 
-        setSupportActionBar(toolbar);
+        setSupportActionBar(toolbar)
     }
 
     private fun initNavigation() {
@@ -70,24 +70,25 @@ class HomeActivity : AppCompatActivity() {
 
         // Connect the navHostFragment with the Toolbar.
         val appBarConfiguration = AppBarConfiguration(navController.graph);
-        NavigationUI.setupWithNavController(navView, navController);
+        NavigationUI.setupWithNavController(navView, navController)
 
         // Automatically handles the back button.
         // toolbar.setupWithNavController(navController, appBarConfiguration);
     }
-
+//When we started the activity we sent in the request code ‘GALLERY_REQUEST_CODE’ so when we find
+// this request code we know that the activity resume after this action.
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data);
+        super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == Activity.RESULT_OK) {
             when (requestCode) {
                 REQUEST_CODE -> {
                     // On success insert the data in the database.
-                    insertInDatabase(data);
+                    insertInDatabase(data)
 
                     // Reload this activity to show the results of our database.
                     val refresh = intent;
-                    startActivity(refresh);
-                    finish();
+                    startActivity(refresh)
+                    finish()
                 }
             }
         }
@@ -115,7 +116,7 @@ class HomeActivity : AppCompatActivity() {
         )
 
         // Insert into database.
-        viewModel.insertRecipe(recipe);
+        viewModel.insertRecipe(recipe)
     }
 }
 

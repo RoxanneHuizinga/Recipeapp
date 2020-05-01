@@ -10,20 +10,21 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class GeneralViewModel (application: Application) : AndroidViewModel(application) {
-    private val ioScope = CoroutineScope(Dispatchers.IO);
-    private val recipeRepository = RecipeRepository(application.applicationContext);
+    private val ioScope = CoroutineScope(Dispatchers.IO)
+    private val recipeRepository = RecipeRepository(application.applicationContext)
 
-    val recipes: LiveData<List<Recipe>> = recipeRepository.getAllRecipes();
+    //Add a recipe object of type LiveData which has the list of recipes from the repository.
+    val recipes: LiveData<List<Recipe>> = recipeRepository.getAllRecipes()
 
     fun insertRecipe(recipe: Recipe) {
         ioScope.launch {
-            recipeRepository.insertRecipe(recipe);
+            recipeRepository.insertRecipe(recipe)
         }
     }
 
     fun deleteRecipe(recipe: Recipe) {
         ioScope.launch {
-            recipeRepository.deleteRecipe(recipe);
+            recipeRepository.deleteRecipe(recipe)
         }
     }
 
@@ -33,3 +34,9 @@ class GeneralViewModel (application: Application) : AndroidViewModel(application
         }
     }
 }
+//A ViewModel has been made for the MainActivity. The logic that doesn’t concern the user
+// interface has been moved to this class. This way we have separated the concerns of ui logic
+// and business logic from each other.
+//
+//We also don’t need the Dispatcher.Main scope anymore because in the ViewModel we don’t have
+// any user interface logic.

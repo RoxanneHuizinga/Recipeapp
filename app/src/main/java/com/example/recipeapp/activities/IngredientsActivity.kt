@@ -20,45 +20,45 @@ import kotlinx.android.synthetic.main.activity_ingredients.*
 
 class IngredientsActivity : AppCompatActivity() {
 
-    private lateinit var toolbar: Toolbar;
-    private lateinit var view : View;
+    private lateinit var toolbar: Toolbar
+    private lateinit var view : View
 
-    private val ingredientList = arrayListOf<Ingredient>();
-    private val ingredientAdapter = IngredientsAdapter(ingredientList);
+    private val ingredientList = arrayListOf<Ingredient>()
+    private val ingredientAdapter = IngredientsAdapter(ingredientList)
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ingredients);
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_ingredients)
 
-        setToolbar();
-        initViews();
+        setToolbar()
+        initViews()
         btnAddIngredient.setOnClickListener {
-            onIngredientAdd();
+            onIngredientAdd()
         }
 
         btnDone.setOnClickListener {
-            onNextClick();
+            onNextClick()
         }
     }
 
     private fun onIngredientAdd() {
 
 
-        hideKeyboard(this.rvIngredients);
+        hideKeyboard(this.rvIngredients)
 
         // Check whether the input is not blank.
         if (etAddIngredient.text.toString().isNotBlank()){
 
-            val ingredient = Ingredient("•  ", etAddIngredient.text.toString());
+            val ingredient = Ingredient("•  ", etAddIngredient.text.toString())
 
             // Add this ingredient to the list. This list will now be shown in adapter and thus in the RecyclerView.
-            ingredientList.add(ingredient);
-            ingredientAdapter.notifyDataSetChanged();
+            ingredientList.add(ingredient)
+            ingredientAdapter.notifyDataSetChanged()
 
             // Input field is cleared after.
-            etAddIngredient.text?.clear();
+            etAddIngredient.text?.clear()
         } else {
-            Toast.makeText(this, "Field is empty.", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Field is empty.", Toast.LENGTH_LONG).show()
         }
     }
 
@@ -66,51 +66,52 @@ class IngredientsActivity : AppCompatActivity() {
 
         // Check whether RecyclerView has items.
         if (ingredientAdapter.itemCount != 0) {
-            val nextIntent = Intent(this@IngredientsActivity, InstructionsActivity::class.java);
-
-            nextIntent.flags = Intent.FLAG_ACTIVITY_FORWARD_RESULT;
+            val nextIntent = Intent(this@IngredientsActivity, InstructionsActivity::class.java)
+//In essence, using this intent flag means that the current activity becomes just a mediator.
+//It is no longer responsible for sending a result back as well for listening to any results.
+            nextIntent.flags = Intent.FLAG_ACTIVITY_FORWARD_RESULT
 
             // Send the data from the previous activity along as data.
-            nextIntent.putExtras(intent);
+            nextIntent.putExtras(intent)
 
             // Add extras from this activity.
-            nextIntent.putExtra("RECIPE_INGREDIENTS_LIST", ingredientList);
+            nextIntent.putExtra("RECIPE_INGREDIENTS_LIST", ingredientList)
 
-            startActivity(nextIntent);
-            finish();
+            startActivity(nextIntent)
+            finish()
         } else {
-            Toast.makeText(this, "Please fill in at least one ingredient.", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Please fill in at least one ingredient.", Toast.LENGTH_LONG).show()
         }
 
         // Fading animation when going from IngredientsActivity to InstructionsActivity.
-        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
     }
 
     private fun initViews() {
-        rvIngredients.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false);
-        rvIngredients.adapter = ingredientAdapter;
+        rvIngredients.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
+        rvIngredients.adapter = ingredientAdapter
 
-        createItemTouchHelper().attachToRecyclerView(rvIngredients);
+        createItemTouchHelper().attachToRecyclerView(rvIngredients)
     }
 
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item?.itemId) {
+        when (item.itemId) {
             android.R.id.home -> {
-                finish();
+                finish()
                 // Fading animation when returning to previous activity.
-                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-                return true;
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
+                return true
             }
         }
         return super.onOptionsItemSelected(item)
     }
 
     private fun setToolbar() {
-        view = findViewById(R.id.parentIngredients);
-        toolbar = view.findViewById(R.id.toolbarIngredients);
-        setSupportActionBar(toolbar);
-        supportActionBar?.setDisplayHomeAsUpEnabled(true);
+        view = findViewById(R.id.parentIngredients)
+        toolbar = view.findViewById(R.id.toolbarIngredients)
+        setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
     /**
@@ -138,8 +139,8 @@ class IngredientsActivity : AppCompatActivity() {
                 val position = viewHolder.adapterPosition
 
                 // Delete ingredient at this position.
-                ingredientList.removeAt(position);
-                ingredientAdapter.notifyDataSetChanged();
+                ingredientList.removeAt(position)
+                ingredientAdapter.notifyDataSetChanged()
             }
         }
         return ItemTouchHelper(callback)
@@ -148,7 +149,7 @@ class IngredientsActivity : AppCompatActivity() {
     // Hide keyboard function.
     private fun Context.hideKeyboard(view: View) {
         val inputMethodManager = getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
-        inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0);
+        inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
     }
 
 }
