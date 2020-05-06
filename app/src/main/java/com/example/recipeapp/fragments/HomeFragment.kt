@@ -1,6 +1,7 @@
 package com.example.recipeapp.fragments
 
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.recipeapp.R
+import com.example.recipeapp.activities.OverviewActivity
 import com.example.recipeapp.recipe.Recipe
 import com.example.recipeapp.recipe.RecipesAdapter
 import com.example.recipeapp.viewModel_LiveData.GeneralViewModel
@@ -29,7 +31,7 @@ class HomeFragment : Fragment() {
         recipeId = it.id
         recipeName = it.name
 
-
+        openOverviewActivity();
     }
 
     private lateinit var myView: View
@@ -108,5 +110,16 @@ class HomeFragment : Fragment() {
         }
         return ItemTouchHelper(callback)
     }
+    private fun openOverviewActivity() {
+        val overviewIntent = Intent(this@HomeFragment.context, OverviewActivity::class.java);
+        overviewIntent.putExtra("ID", recipeId);
+        overviewIntent.putExtra("NAME", recipeName);
+
+        startActivity(overviewIntent);
+
+        // Animation to fade into the AddActivity.
+        activity?.overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+    }
 }
+
 
