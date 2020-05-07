@@ -54,7 +54,7 @@
 
     <include
         android:id="@+id/toolbarIngredients"
-        layout="@layout/add_toolbar"></include>
+        layout="@layout/add_toolbar" />
 
     <ImageView
         android:id="@+id/ivHoney"

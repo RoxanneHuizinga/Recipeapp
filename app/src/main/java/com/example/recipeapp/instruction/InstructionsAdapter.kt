@@ -17,7 +17,7 @@ class InstructionsAdapter (private val instructions: List<Instruction>) : Recycl
      *  For the context variable the lateinit declaration has been used to let Kotlin
      *  know that this variable will be initialized later (in the onCreateViewHolder method).
      */
-    lateinit var context: Context;
+    lateinit var context: Context
 
     /*
      * In onCreateViewHolder a ViewHolder object is created which inflates the layout file we created (item_instruction.xml).
@@ -25,17 +25,17 @@ class InstructionsAdapter (private val instructions: List<Instruction>) : Recycl
      */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         context = parent.context
-        return ViewHolder(LayoutInflater.from(context).inflate(R.layout.item_instruction, parent, false));
+        return ViewHolder(LayoutInflater.from(context).inflate(R.layout.item_instruction, parent, false))
     }
 
     // Size of Instructions.
     override fun getItemCount(): Int {
-        return instructions.size;
+        return instructions.size
     }
 
     // Bind method to bind the data to the ViewHolder.
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(instructions[position]);
+        holder.bind(instructions[position])
     }
 
     /*
@@ -44,8 +44,8 @@ class InstructionsAdapter (private val instructions: List<Instruction>) : Recycl
      */
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(instruction: Instruction) {
-            itemView.tvStep.text = instruction.step;
-            itemView.tvInstruction.text = instruction.instruction;
+            itemView.tvStep.text = instruction.step
+            itemView.tvInstruction.text = instruction.instruction
         }
     }
 }

@@ -15,7 +15,7 @@ import com.example.recipeapp.recipe.Recipe
 abstract class RecipeRoomDatabase : RoomDatabase() {
 
     // Abstract method to get the implementation room makes.
-    abstract fun recipeDao(): RecipeDao;
+    abstract fun recipeDao(): RecipeDao
 
     // We want the database to be static.
     companion object {
@@ -29,11 +29,11 @@ abstract class RecipeRoomDatabase : RoomDatabase() {
             if (recipeRoomDatabaseInstance == null) {
                 synchronized(RecipeRoomDatabase::class.java) {
                     if (recipeRoomDatabaseInstance == null) {
-                        recipeRoomDatabaseInstance = Room.databaseBuilder(context.applicationContext, RecipeRoomDatabase::class.java, DATABASE_NAME).fallbackToDestructiveMigration().build();
+                        recipeRoomDatabaseInstance = Room.databaseBuilder(context.applicationContext, RecipeRoomDatabase::class.java, DATABASE_NAME).fallbackToDestructiveMigration().build()
                     }
                 }
             }
-            return recipeRoomDatabaseInstance;
+            return recipeRoomDatabaseInstance
         }
     }
 }

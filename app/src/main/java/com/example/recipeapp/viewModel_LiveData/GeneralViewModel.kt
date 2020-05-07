@@ -28,11 +28,6 @@ class GeneralViewModel (application: Application) : AndroidViewModel(application
         }
     }
 
-    fun deleteAllRecipes() {
-        ioScope.launch {
-            recipeRepository.deleteAllRecipes();
-        }
-    }
 }
 //A ViewModel has been made for the MainActivity. The logic that doesn’t concern the user
 // interface has been moved to this class. This way we have separated the concerns of ui logic

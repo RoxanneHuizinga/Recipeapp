@@ -31,7 +31,7 @@ class HomeFragment : Fragment() {
         recipeId = it.id
         recipeName = it.name
 
-        openOverviewActivity();
+        openOverviewActivity()
     }
 
     private lateinit var myView: View
@@ -111,14 +111,14 @@ class HomeFragment : Fragment() {
         return ItemTouchHelper(callback)
     }
     private fun openOverviewActivity() {
-        val overviewIntent = Intent(this@HomeFragment.context, OverviewActivity::class.java);
-        overviewIntent.putExtra("ID", recipeId);
-        overviewIntent.putExtra("NAME", recipeName);
+        val overviewIntent = Intent(this@HomeFragment.context, OverviewActivity::class.java)
+        overviewIntent.putExtra("ID", recipeId)
+        overviewIntent.putExtra("NAME", recipeName)
 
-        startActivity(overviewIntent);
+        startActivity(overviewIntent)
 
         // Animation to fade into the AddActivity.
-        activity?.overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+        activity?.overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
     }
 }
 

@@ -27,7 +27,7 @@ class DataConverter {
     fun jsonToInstructionsList(value: String): ArrayList<Instruction>? {
 
         val objects = Gson().fromJson(value, Array<Instruction>::class.java) as Array<Instruction>
-        val list = objects.toCollection(ArrayList());
+        val list = objects.toCollection(ArrayList())
         return list
     }
 
@@ -41,7 +41,7 @@ class DataConverter {
     fun jsonToIngredientsList(value: String): ArrayList<Ingredient>? {
 
         val objects = Gson().fromJson(value, Array<Ingredient>::class.java) as Array<Ingredient>
-        val list = objects.toCollection(ArrayList());
+        val list = objects.toCollection(ArrayList())
         return list
     }
 }

@@ -20,7 +20,7 @@ import com.example.recipeapp.viewModel_LiveData.GeneralViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.content_home.*
 
-const val REQUEST_CODE = 100;
+const val REQUEST_CODE = 100
 
 class HomeActivity : AppCompatActivity() {
 
@@ -48,7 +48,7 @@ class HomeActivity : AppCompatActivity() {
 
     private fun onAddClick() {
         // From HomeActivity to AddActivity.
-        val nextIntent = Intent(this@HomeActivity, RecipeActivity::class.java);
+        val nextIntent = Intent(this@HomeActivity, RecipeActivity::class.java)
         startActivityForResult(nextIntent, REQUEST_CODE)
 
         // Animation to fade into the AddActivity.
@@ -66,10 +66,10 @@ class HomeActivity : AppCompatActivity() {
 
     private fun initNavigation() {
         // The NavController.
-        val navController = findNavController(R.id.navHostFragment);
+        val navController = findNavController(R.id.navHostFragment)
 
         // Connect the navHostFragment with the Toolbar.
-        val appBarConfiguration = AppBarConfiguration(navController.graph);
+        AppBarConfiguration(navController.graph)
         NavigationUI.setupWithNavController(navView, navController)
 
         // Automatically handles the back button.
@@ -86,7 +86,7 @@ class HomeActivity : AppCompatActivity() {
                     insertInDatabase(data)
 
                     // Reload this activity to show the results of our database.
-                    val refresh = intent;
+                    val refresh = intent
                     startActivity(refresh)
                     finish()
                 }
@@ -98,12 +98,12 @@ class HomeActivity : AppCompatActivity() {
     private fun insertInDatabase(data: Intent?) {
 
         // First get all data.
-        val recipeName = data?.extras?.getString("RECIPE_NAME");
-        val recipeImage = data?.extras?.getString("RECIPE_IMAGE");
-        val recipeServings = data?.extras?.getString("RECIPE_SERVINGS");
-        val recipePreparationTime = data?.extras?.getString("RECIPE_PREPARATION_TIME");
-        val recipeIngredients = data?.extras?.getParcelableArrayList<Ingredient>("RECIPE_INGREDIENTS_LIST");
-        val recipeInstructions = data?.extras?.getParcelableArrayList<Instruction>("RECIPE_INSTRUCTIONS_LIST");
+        val recipeName = data?.extras?.getString("RECIPE_NAME")
+        val recipeImage = data?.extras?.getString("RECIPE_IMAGE")
+        val recipeServings = data?.extras?.getString("RECIPE_SERVINGS")
+        val recipePreparationTime = data?.extras?.getString("RECIPE_PREPARATION_TIME")
+        val recipeIngredients = data?.extras?.getParcelableArrayList<Ingredient>("RECIPE_INGREDIENTS_LIST")
+        val recipeInstructions = data?.extras?.getParcelableArrayList<Instruction>("RECIPE_INSTRUCTIONS_LIST")
 
         // Then put this in the Recipe.
         val recipe = Recipe(

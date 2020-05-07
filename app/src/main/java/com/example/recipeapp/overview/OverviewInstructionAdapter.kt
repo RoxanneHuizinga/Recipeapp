@@ -51,7 +51,7 @@ class OverviewInstructionAdapter (private val overviewInstructions: List<Instruc
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(instruction: Instruction) {
 
-            // Make text partly bold.
+            // Make text bold
             val nextLine = System.getProperty("line.separator")
             var myString = instruction.step + nextLine + instruction.instruction
             val stringBuilder = SpannableStringBuilder (myString)

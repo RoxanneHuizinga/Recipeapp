@@ -10,7 +10,7 @@
 
     <include
         android:id="@+id/toolbarOverview"
-        layout="@layout/add_toolbar"></include>
+        layout="@layout/add_toolbar" />
 
     <LinearLayout
         android:id="@+id/linearIngredients"

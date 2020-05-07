@@ -35,11 +35,11 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"></Button>
+        app:layout_constraintStart_toStartOf="parent" />
 
     <include
         android:id="@+id/toolbarInstructions"
-        layout="@layout/add_toolbar"></include>
+        layout="@layout/add_toolbar" />
 
     <ImageView
         android:id="@+id/ivHoney"
@@ -100,7 +100,8 @@
         android:tint="@color/white"
         app:fabCustomSize="60dp"
         app:layout_constraintBottom_toTopOf="@+id/btnDone"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintEnd_toEndOf="parent"
+        android:focusable="true">
 
     </com.google.android.material.floatingactionbutton.FloatingActionButton>
 
