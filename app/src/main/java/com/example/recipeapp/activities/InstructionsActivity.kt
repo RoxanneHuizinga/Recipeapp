@@ -13,9 +13,9 @@ import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.recipeapp.instruction.Instruction
+import com.example.recipeapp.Instruction.InstructionsAdapter
 import com.example.recipeapp.R
-import com.example.recipeapp.instruction.InstructionsAdapter
+import com.example.recipeapp.instruction.Instruction
 import kotlinx.android.synthetic.main.activity_ingredients.*
 import kotlinx.android.synthetic.main.activity_instructions.*
 import kotlinx.android.synthetic.main.activity_instructions.btnDone

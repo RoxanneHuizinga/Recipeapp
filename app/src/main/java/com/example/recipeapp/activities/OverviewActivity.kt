@@ -1,19 +1,19 @@
 package com.example.recipeapp.activities
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.recipeapp.overview.OverviewIngredientAdapter
-import com.example.recipeapp.ingredient.Ingredient
-import com.example.recipeapp.overview.OverviewInstructionAdapter
-import com.example.recipeapp.instruction.Instruction
 import com.example.recipeapp.R
+import com.example.recipeapp.ingredient.Ingredient
+import com.example.recipeapp.instruction.Instruction
+import com.example.recipeapp.overview.OverviewIngredientAdapter
+import com.example.recipeapp.overview.OverviewInstructionAdapter
 import com.example.recipeapp.viewModel_LiveData.GeneralViewModel
 import kotlinx.android.synthetic.main.activity_overview.*
 import kotlinx.android.synthetic.main.add_toolbar.view.*
