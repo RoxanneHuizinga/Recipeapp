@@ -12,8 +12,8 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
-import com.example.recipeapp.ingredient.Ingredient
 import com.example.recipeapp.R
+import com.example.recipeapp.ingredient.Ingredient
 import com.example.recipeapp.instruction.Instruction
 import com.example.recipeapp.recipe.Recipe
 import com.example.recipeapp.viewModel_LiveData.GeneralViewModel
@@ -69,7 +69,7 @@ class HomeActivity : AppCompatActivity() {
         val navController = findNavController(R.id.navHostFragment)
 
         // Connect the navHostFragment with the Toolbar.
-        AppBarConfiguration(navController.graph)
+       val AppBarConfiguration= AppBarConfiguration(navController.graph)
         NavigationUI.setupWithNavController(navView, navController)
 
         // Automatically handles the back button.

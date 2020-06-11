@@ -81,7 +81,7 @@ class OverviewActivity : AppCompatActivity() {
         rvOverviewIngredients.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
         rvOverviewIngredients.adapter = overviewIngredientAdapter
 
-        rvOverviewIngredients.layoutManager =
+        rvOverviewInstructions.layoutManager =
             LinearLayoutManager(this, RecyclerView.VERTICAL, false)
         rvOverviewInstructions.adapter = overviewInstructionAdapter
     }
